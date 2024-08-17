@@ -1,1 +1,4 @@
 npm i express dotenv cors nodemon
+npm install --save sequelize
+npm install --save mysql2
+npm install --save-dev sequelize-cli | npx sequelize-cli init | npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
