@@ -1,11 +1,14 @@
-const user = require("./userRoute");
+import user from "./userRoute";
+import auth from "./authRoute";
+import { notFound } from "../middlewares/handle_errors";
+
 
 const initRoutes = (app) => {
    app.use("/api/v1/user", user);
-   
-   return app.use("/", (req, res) => {
-      return res.send("SERVER ON")
-   })
+   app.use("/api/v1/auth", auth);
+
+
+   app.use(notFound);
 }
 
 module.exports = initRoutes;

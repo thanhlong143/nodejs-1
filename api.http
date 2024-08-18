@@ -1,1 +1,19 @@
 GET http://localhost:5000/api/v1/user/
+
+###
+POST http://localhost:5000/api/v1/auth/register/
+Content-Type: application/json
+
+{
+   "email":"thanhlongppltn@gmail.com",
+   "password":"123435"
+}
+
+###
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json
+
+{
+   "email":"thanhlongppltn@gmail.com",
+   "password":"123435"
+}
