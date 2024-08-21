@@ -17,3 +17,7 @@ Content-Type: application/json
    "email":"thanhlongppltn@gmail.com",
    "password":"123435"
 }
+
+###
+GET http://localhost:5000/api/v1/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJ0aGFuaGxvbmdwcGx0bkBnbWFpbC5jb20iLCJyb2xlX2NvZGUiOiJSMiIsImlhdCI6MTcyNDIxNDYzMiwiZXhwIjoxNzI0NDczODMyfQ.6yI1UOBKpQa1fHqQGSHCLY86FK4SPTAeUVJBif7U9e4
