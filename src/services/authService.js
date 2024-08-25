@@ -7,9 +7,9 @@ const hash = str => bcrypt.hashSync(str, bcrypt.genSaltSync(10));
 export const register = ({ email, password }) => new Promise(async (resolve, reject) => {
    try {
       const response = await db.User.findOrCreate({
-         where: { email: email },
+         where: { email },
          defaults: {
-            email: email,
+            email,
             password: hash(password)
          }
       });
@@ -31,7 +31,7 @@ export const register = ({ email, password }) => new Promise(async (resolve, rej
 export const login = ({ email, password }) => new Promise(async (resolve, reject) => {
    try {
       const response = await db.User.findOne({
-         where: { email: email },
+         where: { email },
          raw: true
       });
       const isChecked = response && bcrypt.compareSync(password, response.password)

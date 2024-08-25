@@ -1,9 +1,9 @@
 import db from "../models";
 
-export const getOne = (id) => new Promise(async (resolve, reject) => {
+export const getOne = (userId) => new Promise(async (resolve, reject) => {
    try {
       const response = await db.User.findOne({
-         where: { id: id },
+         where: { id: userId },
          attributes: {
             exclude: ["password", "role_code"]
          },
