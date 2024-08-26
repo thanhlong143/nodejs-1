@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/api/v1/user/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlX2NvZGUiOiJSMyIsImlhdCI6MTcyNDYyODc2OCwiZXhwIjoxNzI0ODg3OTY4fQ.EZEyritlUFXa-SzEu5ApfA_l6wgNopUHOPZXUNRbyQA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlX2NvZGUiOiJSMSIsImlhdCI6MTcyNDY3MzY5MiwiZXhwIjoxNzI0OTMyODkyfQ.7FNdRMGV0zPA7v89IxOOC5J4ocoVtVKwQB7k-CCpUp8
 
 ###
 GET http://localhost:5000/api/v1/insert/

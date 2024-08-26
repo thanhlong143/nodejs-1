@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import db from "../models";
 import { v4 as generateId } from "uuid";
+const cloudinary = require("cloudinary").v2;
 
 export const getBooks = ({ page, limit, order, title, available, ...query }) => new Promise(async (resolve, reject) => {
    try {
@@ -34,13 +35,14 @@ export const getBooks = ({ page, limit, order, title, available, ...query }) => 
    }
 })
 
-export const createBook = (body) => new Promise(async (resolve, reject) => {
+export const createBook = (body, fileData) => new Promise(async (resolve, reject) => {
    try {
       const response = await db.Book.findOrCreate({
          where: { title: body?.title },
          defaults: {
             ...body,
-            id: generateId()
+            id: generateId(),
+            image: fileData?.path
          }
       });
 
@@ -48,7 +50,10 @@ export const createBook = (body) => new Promise(async (resolve, reject) => {
          error: response[1] ? 0 : 1,
          message: response[1] ? "Created" : "Cannot create new book"
       });
+
+      if (fileData && !response[1]) cloudinary.uploader.destroy(fileData.filename);
    } catch (error) {
       reject(error);
+      if (fileData) cloudinary.uploader.destroy(fileData.filename);
    }
 })
