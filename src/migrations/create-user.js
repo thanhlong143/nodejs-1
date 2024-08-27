@@ -12,8 +12,9 @@ module.exports = {
          name: { type: Sequelize.STRING },
          email: { type: Sequelize.STRING },
          password: { type: Sequelize.STRING },
-         avatar: { type: Sequelize.STRING },
          role_code: { type: Sequelize.STRING, defaultValue: "R3" },
+         avatar: { type: Sequelize.STRING },
+         refresh_token: { type: Sequelize.STRING },
          createdAt: { allowNull: false, type: Sequelize.DATE },
          updatedAt: { allowNull: false, type: Sequelize.DATE }
       });

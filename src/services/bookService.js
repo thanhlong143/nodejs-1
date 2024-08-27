@@ -42,7 +42,8 @@ export const createBook = (body, fileData) => new Promise(async (resolve, reject
          defaults: {
             ...body,
             id: generateId(),
-            image: fileData?.path
+            image: fileData?.path,
+            filename: fileData?.filename
          }
       });
 
@@ -61,7 +62,7 @@ export const createBook = (body, fileData) => new Promise(async (resolve, reject
 export const updateBook = ({ bid, ...body }, fileData) => new Promise(async (resolve, reject) => {
    try {
       if (fileData) body.image = fileData.path;
-      const response = await db.Book.update(body, {
+      const response = await db.Book.update({...body, filename: fileData?.filename}, {
          where: { id: bid }
       });
 
@@ -77,7 +78,7 @@ export const updateBook = ({ bid, ...body }, fileData) => new Promise(async (res
    }
 })
 
-export const deleteBook = (bids) => new Promise(async (resolve, reject) => {
+export const deleteBook = (bids, filename) => new Promise(async (resolve, reject) => {
    try {
       const response = await db.Book.destroy({
          where: { id: bids }
@@ -87,6 +88,8 @@ export const deleteBook = (bids) => new Promise(async (resolve, reject) => {
          error: response > 0 ? 0 : 1,
          message: `${response} book(s) deleted`
       });
+
+      cloudinary.api.delete_resources(filename);
 
    } catch (error) {
       reject(error);
